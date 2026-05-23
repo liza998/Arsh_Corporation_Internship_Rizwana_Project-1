@@ -1,0 +1,98 @@
+body{
+    margin:0;
+    font-family: Arial;
+    background:#f3f4f6;
+}
+
+.title{
+    text-align:center;
+    padding:15px;
+}
+
+/* MAIN LAYOUT */
+.container{
+    display:flex;
+    gap:20px;
+    padding:20px;
+    align-items:flex-start;
+    flex-wrap:wrap;   /* IMPORTANT: prevents layout breaking */
+}
+
+/* IMAGE BOX */
+.image-box{
+    width:650px;
+    height:500px;
+    background:white;
+    border:1px solid #ccc;
+    border-radius:10px;
+    overflow-y:auto;
+    overflow-x: hidden;
+}
+
+.image-box img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    display: block;
+    
+}
+
+/* RIGHT SIDE */
+.info{
+    flex:1;
+    min-width:300px;
+}
+
+/* CARDS */
+.card{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+}
+
+/* SCROLL TEXT */
+.scroll-box{
+    max-height:150px;
+    overflow-y:auto;
+    background:#fafafa;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #eee;
+}
+.standard-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    background: white;
+}
+
+.standard-table th,
+.standard-table td{
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+.standard-table th{
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.standard-table tr:nth-child(even){
+    background-color: #fafafa;
+}
+
+.standard-table tr:hover{
+    background-color: #f1f1f1;
+}
+
+/* CONFIDENCE */
+.confidence{
+    font-size:22px;
+    font-weight:bold;
+    color:green;
+}
+

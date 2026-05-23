@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>OCR Result</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+
+<body>
+
+<h1 class="title">Invoice OCR Result</h1>
+
+<div class="container">
+
+    <div class="image-box">
+        <img src="{{ image_url }}" alt="Invoice">
+    </div>
+
+    <div class="info">
+
+        <div class="card">
+            <h3>Full Text</h3>
+            <div class="scroll-box">
+                <pre>{{ text }}</pre>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Extracted Text</h3>
+            <table class="standard-table">
+
+                <tr>
+                    <td>Vendor</td>
+                    <td>{{ extracted_text.vendor_name }}</td>
+                </tr>
+
+                <tr>
+                    <td>Invoice No</td>
+                    <td>{{ extracted_text.invoice_number }}</td>
+                </tr>
+
+                <tr>
+                    <td>Date</td>
+                    <td>{{ extracted_text.date }}</td>
+                </tr>
+
+                <tr>
+                    <td>Total</td>
+                    <td>{{ extracted_text.total_amount }}</td>
+                </tr>
+                <tr>
+                    <td>Cash</td>
+                    <td>{{ extracted_text.cash }}</td>
+                </tr>
+
+            </table>
+
+    
+        </div>
+
+        <div class="card">
+            <h3>Confidence</h3>
+            <p class="confidence">
+                {{ (confidence * 100) | round(2) }}%
+            </p>
+        </div>
+
+    </div>
+    <button onclick="downloadCSV()">Download File in CSV</button>
+
+</div>
+<script>
+function downloadCSV(){
+    let fullText = "{{ text }}";
+    let vendor = "{{ extracted_text.vendor }}";
+    let invoice = "{{ extracted_text.invoice_no or 'Not Found' }}";
+    let date = "{{ extracted_text.date or 'Not Found' }}";
+    let total = "{{ extracted_text.total or 'Not Found' }}";
+    let confidence = "{{ (confidence * 100) | round(2) }}%";
+ 
+let csvContent = `
+Section,Field,Value
+FULL TEXT,,${fullText.replace(/\n/g, " ")}
+
+EXTRACTED TEXT,Vendor,${vendor}
+EXTRACTED TEXT,Invoice No,${invoice}
+EXTRACTED TEXT,Date,${date}
+EXTRACTED TEXT,Total,${total}
+
+CONFIDENCE,,${confidence}
+`;
+
+let blob =new Blob([csvContent],{type: "text/csv"});
+let link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = "Ocr_result.csv";
+link.click();
+
+
+
+}
+
+
+</script>
+
+</body>
+</html>

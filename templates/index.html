@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">Welcome To Invoice OCR</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label id="drop-area">
+                <input type="file" name="image" id="input-file" accept="image/*" required>
+                <div id="image-view">
+                    <img src="{{ url_for('static', filename='Upload Images/508-icon.png') }}" id="icon-img">
+                    <p>Drag & Drop or Click To upload</p>
+                    <hr>
+                    <span>Upload Image from your computer</span>
+                </div>
+
+
+            </label>
+           
+
+         <button type="submit" id="view-btn">View Extracted text</button>
+        
+        </form>
+    </div>
+
+
+</body>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</html>
