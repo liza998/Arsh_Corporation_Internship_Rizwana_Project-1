@@ -151,7 +151,7 @@ def result():
     with open("static/result/result.json", "r") as f:
         data = json.load(f)
     return render_template(
-        "result.html",
+        "result2.html",
         image_url = "static/result/" +data["img"],
         text = data["fulltext"],
         extracted_text = data["extrattext"],
