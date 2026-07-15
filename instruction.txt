@@ -1,0 +1,36 @@
+
+Gemini API Setup Instructions
+
+This project uses the Google Gemini API.
+
+Before running the application,One must need to create their own API key.
+
+Step 1:
+Visit Google AI Studio:
+https://aistudio.google.com/
+
+Step 2:
+Sign in with user Google account.
+
+Step 3:
+Click "Get API Key" and create a new API key.
+
+Step 4:
+Copy the API key.
+
+Step 5:
+Open the project's .env file (or config.py) and replace:
+
+GOOGLE_API_KEY=YOUR_API_KEY_HERE
+
+with the New API Key User Got from google
+
+GOOGLE_API_KEY=AIzaSyxxxxxxxxxxxxxxxxxxxxxxxx
+
+Step 6:
+Save the file and run the application.
+
+Note:
+• Do not share your API key.
+• Do not upload your API key to GitHub.
+• API usage is billed (or subject to quotas) on your own Google account.
